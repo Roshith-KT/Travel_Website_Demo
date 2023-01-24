@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'styles/register.css'%}" rel="stylesheet">
+    <title>Register Page</title>
+</head>
+<body>
+<header>
+        <h1>Register</h1>
+    </header>
+<main>
+        <form id="login_form" class="form_class" action="register" method="post">
+            {% csrf_token %}
+            <div class="form_div">
+                <label>username:</label>
+                <input class="field_class" name="username" type="text" placeholder="Enter username">
+                <label>Email:</label>
+                <input class="field_class" name="email" type="email" placeholder="Enter email"><br>
+                <label>First name:</label>
+                <input class="field_class" name="first_name" type="text" placeholder="Enter firstname">
+                <label>Last name:</label>
+                <input class="field_class" name="last_name" type="text" placeholder="Enter lastname"><br>
+
+                <label>Password:</label>
+                <input class="field_class" name="password" type="password" placeholder="Enter password">
+                <label>Confirm password:</label>
+                <input class="field_class" name="password1" type="password" placeholder="Confirm password">
+                <input class="submit_class" type="submit"><br>
+                <h3>
+                    {% for msg in messages %}
+                    {{msg}}
+                    {% endfor %}
+                </h3>
+            </div>
+
+        </form>
+    </main>
+<script src="{% static 'js/login.js'%}"></script>
+{% for msg in messages %}
+{{msg}}
+{% endfor %}
+</body>
+</html>
